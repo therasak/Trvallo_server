@@ -26,7 +26,7 @@ const addDestination = async (req, res) => {
         });
 
         const saved = await newData.save()
-        console.log("DATA", newData)
+        // console.log("DATA", newData)
         return res.json({success: true, message: "Destination Added", saved});
 
 
@@ -57,4 +57,17 @@ const GetDestinations = async (req, res) => {
         return res.json({message: "No Data fount"})
     }
 }
-module.exports = {addDestination, GetDestinations}
+
+
+const allDestination = async (req, res) => {
+    // console.log("all")
+    try {
+        const destinations = await DestinationModel.find({});
+        // console.log("dats", destinations)
+        return res.json(destinations)
+    } catch (err) {
+        console.log("error")
+    }
+}
+
+module.exports = {addDestination, GetDestinations, allDestination}

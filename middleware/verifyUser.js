@@ -4,7 +4,7 @@ const AuthMiddelWare = (req, res, next) => {
     const token = req.cookies.token;
     // console.log("Token")
 
-    if (!token) {return res.status(401).json({message: "Not Authenticated"});}
+    if (!token) {return res.status(401).json({isUser: false, message: "Not Authenticated"});}
 
     try {
         const decode = jwt.verify(token, process.env.JWT_SECRET);
@@ -12,7 +12,7 @@ const AuthMiddelWare = (req, res, next) => {
         next()
     } catch (err) {
         console.log("Token exppired")
-        return res.status(403).json({message: "Invalid Token"});
+        return res.status(403).json({LoggedIn: false, message: "Invalid Token"});
 
     }
 }

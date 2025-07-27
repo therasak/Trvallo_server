@@ -65,8 +65,8 @@ const AuthenticateUser = async (req, res) => {
     const password = req.body.password;
 
     console.log("Login attempt:");
-    console.log("Email:", userMail);
-    console.log("Password:", password);
+    // console.log("Email:", userMail);
+    // console.log("Password:", password);
 
     try {
         const IsUser = await UserModel.findOne({email: userMail});
@@ -106,7 +106,7 @@ const AuthenticateUser = async (req, res) => {
 
 const GetUserData = async (req, res) => {
     const userId = req.userId;
-    console.log("USerID", userId);
+    // console.log("USerID", userId);
     try {
         const UserData = await UserModel.findOne({userId: userId})
         if (UserData) {
@@ -120,9 +120,25 @@ const GetUserData = async (req, res) => {
         res.json({message: "Something went wrong fetch"})
     }
 
-    // res.json({Message: "Hello"})
 }
 
 
-module.exports = {UserManage, AuthenticateUser, GetUserData};
+const userLoged = async (req, res) => {
+    return res.json({LoggedIn: true, user: req.userId})
+}
+
+const userLogOut = async (req, res) => {
+    res.clearCookie('token')
+    res.json({logOut: true, message: "user Loged out"})
+}
+
+
+const allDestination = async (req, res) => {
+    try {
+        const destinations=await Destinati
+    } catch (err) {
+
+    }
+}
+module.exports = {UserManage, AuthenticateUser, GetUserData, userLoged, userLogOut};
 
