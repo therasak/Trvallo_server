@@ -2,9 +2,8 @@ const jwt = require('jsonwebtoken')
 
 const AuthMiddelWare = (req, res, next) => {
     const token = req.cookies.token;
-    // console.log("Token")
 
-    if (!token) {return res.status(401).json({isUser: false, message: "Not Authenticated"});}
+    if (!token) {console.log("NO token"); return res.status(401).json({isUser: false, message: "Not Authenticated"});}
 
     try {
         const decode = jwt.verify(token, process.env.JWT_SECRET);

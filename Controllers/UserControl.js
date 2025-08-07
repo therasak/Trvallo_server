@@ -133,12 +133,29 @@ const userLogOut = async (req, res) => {
 }
 
 
-const allDestination = async (req, res) => {
+const userUpdate = async (req, res) => {
+    const userId = req.userId
+    const updateData = req.body.userData
+    // console.log("id", userId)
+    console.log("update", req.body)
+    // res.json({helo: "yfey"})
     try {
-        const destinations=await Destinati
+        const response = await UserModel.findOneAndUpdate(
+            {userId: userId},
+            {$set: updateData},
+            {new: true}
+        )
+        // console.log("fter update",response)
+        res.json({message: "Data Updated"})
     } catch (err) {
+        console.log("erro while update", err);
+        res.json({messag: "error from backend while update"})
 
     }
 }
-module.exports = {UserManage, AuthenticateUser, GetUserData, userLoged, userLogOut};
+
+
+
+module.exports = {UserManage, AuthenticateUser, GetUserData, userLoged, userLogOut, userUpdate};
+
 
