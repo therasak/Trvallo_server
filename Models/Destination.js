@@ -8,7 +8,7 @@ const DestinationSchema= new mongoose.Schema(
         longDescription:{type:String},
         originalPrice:{type:Number},
         discountPrice:{type:Number},
-        category:{type:String},
+        category:{type: String},
         package:{type:String},
         discount:{type:Number},
     },{
