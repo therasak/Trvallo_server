@@ -5,8 +5,8 @@ const BookingsSchema = mongoose.Schema(
         destinationId: {type: String},
         userId: {type: String},
         dateOfBooking: {type: String},
-        confirm: {type: bookingId},
-        people: {type: Number}
+        confirm: {type: Boolean},
+        people: {type: Number},
     }, {
     timestamps: true
 

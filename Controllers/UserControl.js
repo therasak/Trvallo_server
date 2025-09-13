@@ -8,7 +8,8 @@ const {AuthMiddelWare} = require('../middleware/verifyUser')
 
 
 const UserManage = async (req, res) => {
-    console.log(req.body)
+    // console.log("get")
+    // console.log(req.body)
     const salt = 10;
     const AddData = JSON.parse(req.body.datas)
     const profilePic = req.file;
@@ -78,7 +79,7 @@ const AuthenticateUser = async (req, res) => {
 
                 const token = jwt.sign({userId: IsUser.userId}, process.env.JWT_SECRET, {expiresIn: '1d'})
                 res.cookie('token', token, {
-                    httpOnly: true,
+                    httpOnly: false,
                     secure: false,
                     sameSite: "Lax",
                     maxAge: 24 * 60 * 60 * 1000

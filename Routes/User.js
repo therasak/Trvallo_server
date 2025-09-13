@@ -8,13 +8,7 @@ const {verify} = require('jsonwebtoken');
 
 router.post('/addUser', upload.single("profilePic"), UserManage)
 router.post('/login', AuthenticateUser)
-
-
-
 router.post('/getUser', AuthMiddelWare, GetUserData)
-
-
-
 router.post('/IsLogin', AuthMiddelWare, userLoged)
 router.post('/Logout', userLogOut)
 router.patch('/UpdateUser', AuthMiddelWare, userUpdate)
